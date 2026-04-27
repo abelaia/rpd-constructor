@@ -5,5 +5,4 @@
 ## Запуск
 ```bash
 pip install fastapi uvicorn python-multipart python-docx unidecode
-cd app
 python main.py
