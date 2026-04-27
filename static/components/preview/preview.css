@@ -1,0 +1,49 @@
+.preview {
+    background: var(--yellow-bg);
+    border-radius: var(--radius-xl);
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 2px dashed var(--yellow-primary);
+}
+
+.preview h2 {
+    color: var(--orange-dark);
+    margin-bottom: 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.preview-content {
+    background: var(--gray-card);
+    padding: 25px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.8;
+}
+
+.preview-mintitle {
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.preview-university {
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.preview-doctitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: var(--orange-primary);
+}
+
+.preview-discipline {
+    text-align: center;
+    font-weight: bold;
+    color: var(--green-primary);
+}

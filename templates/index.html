@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор РПД</title>
+    <link rel="stylesheet" href="/static/css/variables.css">
+    <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/components/preview/preview.css">
+    <link rel="stylesheet" href="/static/components/discipline-form/discipline-form.css">
+    <link rel="stylesheet" href="/static/components/teacher-form/teacher-form.css">
+    <link rel="stylesheet" href="/static/components/toc-editor/toc-editor.css">
+    <link rel="stylesheet" href="/static/components/edit-page/edit-page.css">
+    <link rel="stylesheet" href="/static/components/buttons/buttons.css">
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Генератор РПД
+        </h1>
+        <p class="subtitle">
+            Создайте титульный лист рабочей программы дисциплины по ГОСТ
+        </p>
+        <div class="preview">
+            <h2>
+                Как будет выглядеть:
+            </h2>
+            <div class="preview-content">
+                <p style="text-align: center; font-weight: bold;">МИНОБРНАУКИ РОССИИ</p>
+                <p style="text-align: center;">
+                    Федеральное государственное автономное образовательное<br>
+                    учреждение высшего образования «Южный федеральный университет»<br>
+                    (ЮЖНЫЙ ФЕДЕРАЛЬНЫЙ УНИВЕРСИТЕТ)
+                </p>
+                <p style="text-align: center; font-weight: bold; font-size: 1.2em;">
+                    РАБОЧАЯ ПРОГРАММА ДИСЦИПЛИНЫ (МОДУЛЯ)
+                </p>
+                <p id="preview-name" style="text-align: center; font-weight: bold;">
+                    Basics of SpringBoot (Основы SpringBoot)
+                </p>
+            </div>
+        </div>
+        <form id="rpd-form">
+            <div class="form-group">
+                <label for="discipline_name">
+                    Название дисциплины:
+                </label>
+                <input
+                        type="text"
+                       id="discipline_name"
+                       name="discipline_name"
+                       value="Basics of SpringBoot (Основы SpringBoot)"
+                       placeholder="Введите название дисциплины на английском и русском"
+                       required
+                >
+                <small>
+                    Формат: "English Name (Русское название)"
+                </small>
+            </div>
+            <div class="form-section">
+                <h2>
+                    Составитель и утверждение
+                </h2>
+                <div class="form-group">
+                    <label>ФИО составителя:</label>
+                    <input
+                            type="text"
+                            name="teacher_name"
+                            placeholder="О. Ю. Кравченко"
+                            value="О. Ю. Кравченко"
+                    >
+                </div>
+                <div class="form-group">
+                    <label>
+                        Ученая степень, звание:
+                    </label>
+                    <input
+                            type="text"
+                            name="teacher_title"
+                            placeholder="к. ф.-м.н., доцент"
+                            value="к. ф.-м.н., доцент"
+                    >
+                </div>
+                <div class="form-group">
+                    <label>
+                        Название кафедры:
+                    </label>
+                    <input
+                            type="text"
+                            name="department"
+                            placeholder="Технологии автоматизации в бизнесе"
+                            value="Технологии автоматизации в бизнесе"
+                    >
+                </div>
+                <div class="form-group">
+                    <label>
+                        Дата утверждения УМС:
+                    </label>
+                    <input
+                            type="text"
+                            name="ums_date"
+                            placeholder="«22» апреля 2025 г."
+                            value="«22» апреля 2025 г."
+                    >
+                </div>
+                <div class="form-group">
+                    <label>
+                        Протокол УМС №:
+                    </label>
+                    <input
+                            type="text"
+                            name="ums_protocol"
+                            placeholder="4"
+                            value="4"
+                    >
+                </div>
+            </div>
+            <div class="toc-section">
+                <div class="toc-header">
+                    <h2>
+                        Содержание (оглавление)
+                    </h2>
+                    <div class="toc-actions-top">
+                        <button
+                                type="button"
+                                class="btn-small"
+                                id="expand-all"
+                        >
+                            Развернуть все
+                        </button>
+                        <button
+                                type="button"
+                                class="btn-small"
+                                id="collapse-all"
+                        >
+                            Свернуть все
+                        </button>
+                    </div>
+                </div>
+                <p class="toc-description">
+                    Основные разделы уже добавлены. Вы можете редактировать номера страниц и добавлять подпункты к
+                    разделам IV, V и VIII.
+                </p>
+                <div id="toc-items-container">
+                    <div
+                            class="toc-main-item"
+                            data-id="I"
+                    >
+                        <div class="toc-main-header">
+                            <span class="toc-number">
+                                I.
+                            </span>
+                            <input
+                                    type="text"
+                                    class="toc-title"
+                                    value="Цели и задачи освоения дисциплины"
+                                    placeholder="Введите название раздела"
+                            >
+                            <input
+                                    type="text"
+                                    class="toc-page"
+                                    placeholder="4"
+                                    value="4"
+                            >
+                        </div>
+                    </div>
+                    <div
+                            class="toc-main-item"
+                            data-id="II"
+                    >
+                        <div class="toc-main-header">
+                            <span class="toc-number">
+                                II.
+                            </span>
+                            <input
+                                    type="text"
+                                    class="toc-title"
+                                    value="Место дисциплины в структуре образовательной программы"
+                                    placeholder="Введите название раздела"
+                            >
+                            <input
+                                    type="text"
+                                    class="toc-page"
+                                    placeholder="4"
+                                    value="4"
+                            >
+                        </div>
+                    </div>
+                    <div
+                            class="toc-main-item"
+                            data-id="III"
+                    >
+                        <div class="toc-main-header">
+                            <span class="toc-number">
+                                III.
+                            </span>
+                            <input
+                                    type="text"
+                                    class="toc-title"
+                                    value="Требования к результатам освоения дисциплины"
+                                    placeholder="Введите название раздела"
+                            >
+                            <input
+                                    type="text"
+                                    class="toc-page"
+                                    placeholder="5"
+                                    value="5"
+                            >
+                        </div>
+                    </div>
+                    <div
+                            class="toc-main-item expandable"
+                            data-id="IV"
+                    >
+                        <div class="toc-main-header">
+                            <span class="toc-number">
+                                IV.
+                            </span>
+                            <input
+                                    type="text"
+                                    class="toc-title"
+                                    value="Содержание и структура дисциплины"
+                            >
+                            <input
+                                    type="text"
+                                    class="toc-page"
+                                    placeholder="6"
+                                    value="6"
+                            >
+                            <button
+                                    type="button"
+                                    class="toggle-subitems"
+                                    onclick="toggleSubitems('IV')"
+                            >
+                                ▶
+                            </button>
+                        </div>
+                        <div
+                                class="subitems-container"
+                                id="subitems-IV"
+                                style="display: none;"
+                        >
+                            <div
+                                    class="subitem"
+                                    data-index="0"
+                            >
+                                <span class="subitem-number">
+                                    4.1.
+                                </span>
+                                <input
+                                        type="text"
+                                        class="subitem-title"
+                                       placeholder="Содержание дисциплины..."
+                                       value="Содержание дисциплины, структурированное по темам (учебным встречам) для 1 семестра очной формы обучения"
+                                >
+                                <input
+                                        type="text"
+                                        class="subitem-page"
+                                        placeholder="6"
+                                        value="6"
+                                >
+                                <button
+                                        type="button"
+                                        class="remove-subitem-btn"
+                                        onclick="removeSubitem('IV', 0)"
+                                >
+                                    x
+                                </button>
+                            </div>
+                            <div
+                                    class="subitem"
+                                    data-index="1"
+                            >
+                                <span class="subitem-number">
+                                    4.2.
+                                </span>
+                                <input
+                                        type="text"
+                                        class="subitem-title"
+                                        placeholder="План внеаудиторной самостоятельной работы"
+                                        value="План внеаудиторной самостоятельной работы"
+                                >
+                                <input
+                                        type="text"
+                                        class="subitem-page"
+                                        placeholder="8"
+                                        value="8"
+                                >
+                                <button
+                                        type="button"
+                                        class="remove-subitem-btn"
+                                        onclick="removeSubitem('IV', 1)"
+                                >
+                                    x
+                                </button>
+                            </div>
+                            <div class="subitem-actions">
+                                <button
+                                        type="button"
+                                        class="add-subitem-btn"
+                                        onclick="addSubitem('IV')"
+                                >
+                                    + Добавить подпункт 4.x
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="toc-main-item expandable"
+                            data-id="V"
+                    >
+                        <div class="toc-main-header">
+                            <span class="toc-number">
+                                V.
+                            </span>
+                            <input
+                                    type="text"
+                                    class="toc-title"
+                                    value="Учебно-методическое обеспечение дисциплины"
+                            >
+                            <input
+                                    type="text"
+                                    class="toc-page"
+                                    placeholder="11"
+                                    value="11"
+                            >
+                            <button
+                                    type="button"
+                                    class="toggle-subitems"
+                                    onclick="toggleSubitems('V')"
+                            >
+                                ▶
+                            </button>
+                        </div>
+                        <div
+                                class="subitems-container"
+                                id="subitems-V"
+                                style="display: none;"
+                        >
+                            <div
+                                    class="subitem"
+                                    data-index="0"
+                            >
+                                <span class="subitem-number">
+                                    5.1.
+                                </span>
+                                <input
+                                        type="text"
+                                        class="subitem-title"
+                                        placeholder="Основная литература"
+                                        value="Основная литература"
+                                >
+                                <input
+                                        type="text"
+                                        class="subitem-page"
+                                        placeholder="11"
+                                        value="11"
+                                >
+                                <button
+                                        type="button"
+                                        class="remove-subitem-btn"
+                                        onclick="removeSubitem('V', 0)"
+                                >
+                                     x
+                                </button>
+                            </div>
+                            <div class="subitem-actions">
+                                <button
+                                        type="button"
+                                        class="add-subitem-btn"
+                                        onclick="addSubitem('V')"
+                                >
+                                    + Добавить подпункт 5.x
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="toc-main-item"
+                            data-id="VI"
+                    >
+                        <div class="toc-main-header">
+                            <span class="toc-number">
+                                VI.
+                            </span>
+                            <input
+                                    type="text"
+                                    class="toc-title"
+                                    value="Материально-техническое обеспечение дисциплины"
+                            >
+                            <input
+                                    type="text"
+                                    class="toc-page"
+                                    placeholder="12"
+                                    value="12"
+                            >
+                        </div>
+                    </div>
+                    <div
+                            class="toc-main-item"
+                            data-id="VII"
+                    >
+                        <div class="toc-main-header">
+                            <span class="toc-number">
+                                VII.
+                            </span>
+                            <input
+                                    type="text"
+                                    class="toc-title"
+                                    value="Методические указания для обучающихся по освоению дисциплины"
+                            >
+                            <input
+                                    type="text"
+                                    class="toc-page"
+                                    placeholder="13"
+                                    value="13"
+                            >
+                        </div>
+                    </div>
+                    <div
+                        class="toc-main-item expandable"
+                        data-id="VIII"
+                    >
+                        <div class="toc-main-header">
+                            <span class="toc-number">
+                                VIII.
+                            </span>
+                            <input
+                                    type="text"
+                                    class="toc-title"
+                                    value="Фонд оценочных средств"
+                            >
+                            <input
+                                    type="text"
+                                    class="toc-page"
+                                    placeholder="14"
+                                    value="14"
+                            >
+                            <button
+                                    type="button"
+                                    class="toggle-subitems"
+                                    onclick="toggleSubitems('VIII')"
+                            >
+                                ->
+                            </button>
+                        </div>
+                        <div
+                                class="subitems-container"
+                                id="subitems-VIII"
+                                style="display: none;"
+                        >
+                            <div
+                                class="subitem"
+                                data-index="0"
+                            >
+                                <span class="subitem-number">
+                                    8.1.
+                                </span>
+                                <input
+                                        type="text"
+                                        class="subitem-title"
+                                        placeholder="Паспорт фонда оценочных средств"
+                                        value="Паспорт фонда оценочных средств"
+                                >
+                                <input
+                                        type="text"
+                                        class="subitem-page"
+                                        placeholder="14"
+                                        value="14"
+                                >
+                                <button
+                                        type="button"
+                                        class="remove-subitem-btn"
+                                        onclick="removeSubitem('VIII', 0)"
+                                >
+                                    x
+                                </button>
+                            </div>
+                            <div
+                                    class="subitem"
+                                    data-index="1"
+                            >
+                                <span
+                                        class="subitem-number"
+                                >
+                                    8.2.
+                                </span>
+                                <input
+                                        type="text"
+                                        class="subitem-title"
+                                        placeholder="Лабораторная работа №1"
+                                        value="Лабораторная работа №1"
+                                >
+                                <input
+                                        type="text"
+                                        class="subitem-page"
+                                        placeholder="15"
+                                        value="15"
+                                >
+                                <button
+                                        type="button"
+                                        class="remove-subitem-btn"
+                                        onclick="removeSubitem('VIII', 1)"
+                                >
+                                    x
+                                </button>
+                            </div>
+                            <div class="subitem-actions">
+                                <button
+                                        type="button"
+                                        class="add-subitem-btn"
+                                        onclick="addSubitem('VIII')"
+                                >
+                                    + Добавить подпункт 8.x
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="toc-main-item"
+                            data-id="IX"
+                    >
+                        <div class="toc-main-header">
+                            <span class="toc-number">
+                                IX.
+                            </span>
+                            <input
+                                    type="text"
+                                    class="toc-title"
+                                    value="Заключительные положения"
+                            >
+                            <input
+                                    type="text"
+                                    class="toc-page"
+                                    placeholder="16"
+                                    value="16"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <h3 class="toc-preview-title">
+                    Предпросмотр содержания:
+                </h3>
+                <div
+                        class="toc-preview"
+                        id="toc-preview">
+                </div>
+                <div style="margin-top: 30px; display: flex; justify-content: center;">
+                    <button
+                            type="button"
+                            id="confirm-toc-btn"
+                            class="btn-confirm"
+                    >
+                        Подтвердить содержание и перейти к редактированию
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div
+                id="edit-page"
+                style="display: none;"
+        >
+            <div class="edit-header">
+                <h1>
+                    Редактирование содержания
+                </h1>
+                <p class="subtitle">
+                    Добавьте текст к каждому пункту содержания
+                </p>
+                <button
+                        type="button"
+                        id="back-to-form-btn"
+                        class="btn-back"
+                >
+                    Назад к форме
+                </button>
+            </div>
+            <div id="edit-container" class="edit-container">
+            </div>
+            <div class="form-group">
+                <label for="custom_filename">
+                    Имя файла:
+                </label>
+                <input
+                        type="text"
+                        id="custom_filename"
+                        name="custom_filename"
+                        placeholder="Например: Моя_рабочая_программа"
+                        class="form-control"
+                >
+                <small class="form-text text-muted">
+                    Если не заполнить, имя сгенерируется автоматически из названия дисциплины
+                </small>
+            </div>
+            <button
+                    type="button"
+                    id="save-all-btn"
+                    class="btn-save"
+            >
+                <span>
+                    Сохранить и создать РПД
+                </span>
+            </button>
+        </div>
+    </div>
+    <script src="/static/js/table4_1.js"></script>
+    <script src="/static/js/table4_2.js"></script>
+    <script src="/static/js/competencies.js"></script>
+    <script src="/static/js/toc.js"></script>
+    <script src="/static/js/preview.js"></script>
+    <script src="/static/js/edit.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

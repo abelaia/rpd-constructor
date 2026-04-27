@@ -1,0 +1,292 @@
+.toc-section {
+    margin-top: 40px;
+    background: var(--gray-bg);
+    border-radius: var(--radius-xl);
+    padding: 25px;
+}
+
+.toc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.toc-header h2 {
+    margin: 0;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toc-actions-top {
+    display: flex;
+    gap: 10px;
+}
+
+.toc-description {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.toc-main-item {
+    background: var(--gray-card);
+    border: 2px solid var(--gray-border);
+    border-radius: var(--radius-lg);
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: var(--transition-normal);
+}
+
+.toc-main-item:hover {
+    border-color: var(--orange-primary);
+    box-shadow: var(--shadow-orange);
+}
+
+.toc-main-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.toc-number {
+    font-weight: bold;
+    color: var(--orange-primary);
+    min-width: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+.toc-main-header .toc-title {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    background-color: var(--gray-hover);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+}
+
+.toc-main-header .toc-page {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    text-align: center;
+}
+
+.toc-main-header .toc-page:focus {
+    outline: none;
+    border-color: var(--orange-primary);
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.15);
+}
+
+.toggle-subitems {
+    background: var(--green-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: var(--transition-fast);
+}
+
+.toggle-subitems:hover {
+    background: var(--green-hover);
+}
+
+.subitems-container {
+    margin-top: 15px;
+    padding-left: 30px;
+    border-left: 2px dashed var(--yellow-primary);
+}
+
+.subitem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: var(--yellow-bg);
+    border-radius: var(--radius-md);
+}
+
+.subitem-number {
+    font-weight: bold;
+    color: var(--orange-dark);
+    min-width: 40px;
+    font-size: 14px;
+}
+
+.subitem-title {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    transition: var(--transition-fast);
+}
+
+.subitem-title:focus {
+    outline: none;
+    border-color: var(--orange-primary);
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.15);
+}
+
+.subitem-page {
+    width: 50px;
+    padding: 6px;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    text-align: center;
+}
+
+.subitem-page:focus {
+    outline: none;
+    border-color: var(--orange-primary);
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.15);
+}
+
+.remove-subitem-btn {
+    background: var(--red-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.remove-subitem-btn:hover {
+    background: var(--red-hover);
+    transform: scale(1.1);
+}
+
+.subitem-actions {
+    margin-top: 10px;
+    padding-left: 40px;
+}
+
+.add-subitem-btn {
+    background: var(--blue-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.add-subitem-btn:hover {
+    background: var(--blue-hover);
+}
+
+.toc-preview-title {
+    margin-top: 30px;
+    color: var(--text-primary);
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.toc-preview {
+    background: var(--gray-card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.8;
+    border: 1px solid var(--gray-border);
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+.toc-preview-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed var(--gray-border);
+}
+
+.toc-preview-item.main-item {
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.toc-preview-item.subitem {
+    padding-left: 20px;
+    color: var(--text-secondary);
+    font-weight: normal;
+}
+
+.toc-preview-page {
+    color: var(--orange-primary);
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+.empty-toc {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px;
+    font-style: italic;
+}
+
+.btn-small {
+    background: var(--gray-border);
+    color: var(--text-secondary);
+    border: none;
+    border-radius: var(--radius-full);
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: var(--transition-fast);
+}
+
+.btn-small:hover {
+    background: var(--gray-hover);
+    transform: translateY(-1px);
+}
+
+.btn-confirm {
+    background: var(--green-primary);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0 0;
+    transition: var(--transition-fast);
+    width: 100%;
+    font-weight: 600;
+}
+
+.btn-confirm:hover {
+    background: var(--green-hover);
+}

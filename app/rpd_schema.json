@@ -1,0 +1,381 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Рабочая программа дисциплины",
+  "description": "Схема для генерации рабочих программ учебных дисциплин",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "description": "Метаданные документа",
+      "properties": {
+        "document_type": {
+          "type": "string",
+          "const": "РАБОЧАЯ ПРОГРАММА ДИСЦИПЛИНЫ (МОДУЛЯ)"
+        },
+        "generation_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": ["document_type", "generation_date"]
+    },
+    "university_info": {
+      "type": "object",
+      "description": "Информация об учебном заведении",
+      "properties": {
+        "full_name": {
+          "type": "string",
+          "description": "Полное наименование вуза",
+          "example": "Федеральное государственное автономное образовательное учреждение высшего образования «Южный федеральный университет»"
+        },
+        "short_name": {
+          "type": "string",
+          "description": "Сокращенное наименование",
+          "example": "ЮЖНЫЙ ФЕДЕРАЛЬНЫЙ УНИВЕРСИТЕТ"
+        },
+        "institute": {
+          "type": "string",
+          "description": "Институт/факультет",
+          "example": "Институт математики, механики и компьютерных наук им. И.И. Воровича"
+        },
+        "department": {
+          "type": "string",
+          "description": "Кафедра",
+          "example": "Технологии автоматизации в бизнесе"
+        }
+      },
+      "required": ["full_name", "short_name", "department"]
+    },
+    "discipline_info": {
+      "type": "object",
+      "description": "Информация о дисциплине",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Код дисциплины",
+          "example": "Б1.В.1.7"
+        },
+        "name_ru": {
+          "type": "string",
+          "description": "Название на русском языке",
+          "example": "Основы SpringBoot"
+        },
+        "name_en": {
+          "type": "string",
+          "description": "Название на английском языке",
+          "example": "Basics of SpringBoot"
+        },
+        "study_form": {
+          "type": "string",
+          "enum": ["очная", "заочная", "очно-заочная"],
+          "description": "Форма обучения"
+        },
+        "semester": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12,
+          "description": "Семестр изучения"
+        },
+        "credits": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Количество зачетных единиц",
+          "example": 5
+        },
+        "total_hours": {
+          "type": "integer",
+          "minimum": 36,
+          "description": "Общая трудоемкость в часах",
+          "example": 180
+        },
+        "control_form": {
+          "type": "string",
+          "enum": ["зачет", "экзамен", "зачет с оценкой"],
+          "description": "Форма промежуточной аттестации"
+        }
+      },
+      "required": ["code", "name_ru", "name_en", "credits", "total_hours", "control_form"]
+    },
+    "personnel": {
+      "type": "object",
+      "description": "Ответственные лица",
+      "properties": {
+        "director": {
+          "type": "object",
+          "properties": {
+            "full_name": {
+              "type": "string",
+              "description": "ФИО директора института",
+              "example": "М. И. Карякин"
+            },
+            "position": {
+              "type": "string",
+              "description": "Должность",
+              "example": "директор Института математики, механики и компьютерных наук им. И.И. Воровича"
+            },
+            "signature": {
+              "type": "object",
+              "properties": {
+                "number": {
+                  "type": "string",
+                  "description": "Номер электронной подписи",
+                  "example": "05F2877E0095B162AB4F1BED20A14409AA"
+                },
+                "valid_from": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Дата начала действия"
+                },
+                "valid_to": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Дата окончания действия"
+                }
+              }
+            }
+          }
+        },
+        "compiler": {
+          "type": "object",
+          "properties": {
+            "full_name": {
+              "type": "string",
+              "description": "ФИО составителя",
+              "example": "О. Ю. Кравченко"
+            },
+            "degree": {
+              "type": "string",
+              "description": "Ученая степень",
+              "example": "к. ф.-м.н."
+            },
+            "position": {
+              "type": "string",
+              "description": "Должность",
+              "example": "доцент"
+            }
+          }
+        },
+        "approval_info": {
+          "type": "object",
+          "properties": {
+            "department_meeting": {
+              "type": "object",
+              "properties": {
+                "date": { "type": "string" },
+                "protocol_number": { "type": "string" }
+              }
+            },
+            "ums_meeting": {
+              "type": "object",
+              "properties": {
+                "date": { "type": "string", "format": "date" },
+                "protocol_number": { "type": "integer" }
+              }
+            }
+          }
+        }
+      },
+      "required": ["compiler"]
+    },
+    "content_sections": {
+      "type": "object",
+      "description": "Содержательные разделы программы",
+      "properties": {
+        "goals_and_objectives": {
+          "type": "object",
+          "properties": {
+            "goals": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "objectives": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "discipline_position": {
+          "type": "object",
+          "properties": {
+            "part_type": { "type": "string" },
+            "module_type": { "type": "string" },
+            "prerequisites": { "type": "string" },
+            "subsequent_courses": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "competences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": { "type": "string" },
+              "description": { "type": "string" },
+              "indicators": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "code": { "type": "string" },
+                    "description": { "type": "string" },
+                    "learning_outcomes": {
+                      "type": "object",
+                      "properties": {
+                        "knowledge": { "type": "array", "items": { "type": "string" } },
+                        "skills": { "type": "array", "items": { "type": "string" } },
+                        "abilities": { "type": "array", "items": { "type": "string" } }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "study_plan": {
+          "type": "object",
+          "properties": {
+            "modules": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "topics": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "number": { "type": "integer" },
+                        "title": { "type": "string" },
+                        "lecture_hours": { "type": "integer" },
+                        "practice_hours": { "type": "integer" },
+                        "lab_hours": { "type": "integer" },
+                        "self_study_hours": { "type": "integer" },
+                        "control_form": { "type": "string" },
+                        "points": { "type": "integer" }
+                      },
+                      "required": ["number", "title"]
+                    }
+                  }
+                }
+              }
+            },
+            "totals": {
+              "type": "object",
+              "properties": {
+                "total_lecture_hours": { "type": "integer" },
+                "total_lab_hours": { "type": "integer" },
+                "total_self_study_hours": { "type": "integer" },
+                "total_points": { "type": "integer" }
+              }
+            }
+          }
+        },
+        "self_study_plan": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "topic": { "type": "string" },
+              "semester": { "type": "integer" },
+              "deadline_week": { "type": "integer" },
+              "work_type": { "type": "string" },
+              "hours": { "type": "integer" }
+            }
+          }
+        },
+        "literature": {
+          "type": "object",
+          "properties": {
+            "main": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "additional": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "online_resources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": { "type": "string" },
+                  "url": { "type": "string", "format": "uri" },
+                  "access_date": { "type": "string", "format": "date" }
+                }
+              }
+            }
+          }
+        },
+        "technical_requirements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "room_type": { "type": "string" },
+              "audience_type": { "type": "string" },
+              "equipment": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "methodological_guidelines": { "type": "string" },
+        "assessment_fund": {
+          "type": "object",
+          "properties": {
+            "passport": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "competence_indicator": { "type": "string" },
+                  "assessment_tools": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                }
+              }
+            },
+            "lab_works": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "number": { "type": "integer" },
+                  "topic": { "type": "string" },
+                  "controlled_topics": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  },
+                  "methodological_instructions": { "type": "string" },
+                  "defense_stages": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  },
+                  "tasks": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  },
+                  "assessment_criteria": { "type": "string" },
+                  "max_points": { "type": "integer" }
+                }
+              }
+            },
+            "passing_score": { "type": "integer" }
+          }
+        }
+      }
+    }
+  },
+  "required": ["metadata", "university_info", "discipline_info", "personnel", "content_sections"]
+}

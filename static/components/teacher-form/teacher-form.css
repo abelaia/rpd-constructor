@@ -1,0 +1,17 @@
+.form-section {
+    background: var(--yellow-bg);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--orange-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-section h2 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-bottom: 2px solid var(--gray-border);
+    padding-bottom: 10px;
+    font-weight: 600;
+}
