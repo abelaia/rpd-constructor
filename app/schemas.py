@@ -5,7 +5,9 @@ FastAPI сам сверяет входящий JSON с этими моделям
 ошибки, а до генерации документа дело не доходит.
 """
 
-from pydantic import BaseModel, Field
+from datetime import UTC, datetime
+
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class TocItem(BaseModel):
@@ -131,3 +133,31 @@ class RPDGenerateRequest(BaseModel):
     toc_items: list[TocItem] = Field(default_factory=list)
     toc_subitems: dict[str, list[TocSubitem]] = Field(default_factory=dict)
     section_contents: SectionContents = Field(default_factory=SectionContents)
+
+
+class ProgramSummary(BaseModel):
+    """Краткие сведения о сохранённой программе — для списка."""
+
+    # from_attributes разрешает собирать модель прямо из объекта базы данных.
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    discipline_name: str
+    teacher_name: str
+    created_at: datetime
+    updated_at: datetime
+
+    @field_validator("created_at", "updated_at")
+    @classmethod
+    def mark_as_utc(cls, value: datetime) -> datetime:
+        """SQLite не хранит часовой пояс, поэтому при чтении явно помечаем время как UTC.
+
+        Тогда в JSON уходит «...Z», и браузер сам переводит время в местное.
+        """
+        return value if value.tzinfo else value.replace(tzinfo=UTC)
+
+
+class ProgramDetail(ProgramSummary):
+    """Сохранённая программа целиком: сведения из списка плюс всё содержимое."""
+
+    data: RPDGenerateRequest

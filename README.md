@@ -30,6 +30,15 @@ ruff format .   # автоформатирование
 | `app/schemas.py` | описание данных, которые приходят с формы (Pydantic) |
 | `app/config.py` | реквизиты вуза |
 | `app/filenames.py` | имя скачиваемого файла |
+| `app/database.py` | подключение к базе данных (SQLAlchemy) |
+| `app/models.py` | таблицы базы данных |
+| `app/routers/programs.py` | API сохранённых программ |
 | `app/docx_builder/` | сборка документа: по файлу на группу разделов РПД |
 | `templates/`, `static/` | страница, стили и скрипты клиента |
 | `tests/` | тесты; `tests/snapshots/` — эталон документа |
+
+## База данных
+
+Программы сохраняются в файл `data/rpd.db` (SQLite), он создаётся при первом запуске
+и в git не попадает. Список сохранённых программ — на странице http://localhost:8000/programs,
+описание всех адресов API — на http://localhost:8000/docs.

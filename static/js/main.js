@@ -114,6 +114,9 @@ document.getElementById('back-to-form-btn').addEventListener('click', function()
     document.getElementById('edit-page').style.display = 'none';
 });
 
+// Номер программы в базе данных; появляется после первого сохранения.
+let savedProgramId = null;
+
 document.getElementById('save-all-btn').addEventListener('click', async function() {
     const formData = new FormData(document.getElementById('rpd-form'));
     const data = Object.fromEntries(formData.entries());
@@ -172,11 +175,21 @@ document.getElementById('save-all-btn').addEventListener('click', async function
     button.disabled = true;
 
     try {
-        const response = await fetch('/generate-word', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
+        // Сначала сохраняем программу в базе данных. При повторном нажатии
+        // обновляем уже сохранённую программу, а не создаём копию.
+        const saveResponse = await fetch(
+            savedProgramId ? `/api/programs/${savedProgramId}` : '/api/programs',
+            {
+                method: savedProgramId ? 'PUT' : 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }
+        );
+        if (!saveResponse.ok) throw new Error('Ошибка сервера: ' + saveResponse.status);
+        savedProgramId = (await saveResponse.json()).id;
+
+        // Затем скачиваем документ, собранный из сохранённых данных.
+        const response = await fetch(`/api/programs/${savedProgramId}/docx`);
 
         if (!response.ok) throw new Error('Ошибка сервера: ' + response.status);
 
@@ -197,7 +210,7 @@ document.getElementById('save-all-btn').addEventListener('click', async function
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
-        alert('Документ успешно создан и скачан!');
+        alert('Программа сохранена, документ скачан!');
     } catch (error) {
         console.error('Ошибка:', error);
         alert('Ошибка при создании документа: ' + error.message);

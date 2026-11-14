@@ -1,0 +1,119 @@
+.page-nav {
+    margin-bottom: 24px;
+}
+
+.page-nav a {
+    color: var(--blue-dark);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.page-nav a:hover {
+    text-decoration: underline;
+}
+
+.page-nav--right {
+    text-align: right;
+}
+
+.programs-status {
+    color: var(--text-muted);
+    text-align: center;
+    padding: 32px 0;
+}
+
+.programs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.programs-table th,
+.programs-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-border);
+    vertical-align: middle;
+}
+
+.programs-table th {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.programs-table tbody tr:hover {
+    background: var(--gray-hover);
+}
+
+.programs-table .discipline {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.programs-table .actions {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.programs-table .actions a,
+.programs-table .actions button {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--radius-full);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.programs-table .action-download {
+    background: var(--blue-light);
+    color: var(--blue-dark);
+}
+
+.programs-table .action-delete {
+    background: var(--red-light);
+    color: var(--red-hover);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+    .programs-table thead {
+        display: none;
+    }
+
+    .programs-table tr,
+    .programs-table td {
+        display: block;
+    }
+
+    .programs-table td {
+        border: none;
+        padding: 4px 0;
+    }
+
+    .programs-table tr {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--gray-border);
+    }
+
+    .programs-table .actions {
+        text-align: left;
+    }
+
+    .programs-table .actions a,
+    .programs-table .actions button {
+        margin: 8px 8px 0 0;
+    }
+}

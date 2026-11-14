@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сохранённые программы — Конструктор РПД</title>
+    <link rel="stylesheet" href="/static/css/variables.css">
+    <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/programs.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Сохранённые программы</h1>
+        <p class="subtitle">Рабочие программы, которые вы уже создавали</p>
+
+        <p class="page-nav"><a href="/">← Создать новую программу</a></p>
+
+        <p id="programs-status" class="programs-status">Загрузка…</p>
+        <table id="programs-table" class="programs-table" hidden>
+            <thead>
+                <tr>
+                    <th>Дисциплина</th>
+                    <th>Составитель</th>
+                    <th>Изменена</th>
+                    <th><span class="visually-hidden">Действия</span></th>
+                </tr>
+            </thead>
+            <tbody id="programs-body"></tbody>
+        </table>
+    </div>
+    <script src="/static/js/programs.js"></script>
+</body>
+</html>
