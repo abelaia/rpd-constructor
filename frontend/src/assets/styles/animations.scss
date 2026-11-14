@@ -1,0 +1,18 @@
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes rise-in {
+    from {
+        transform: translateY($indent-step * 4);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
