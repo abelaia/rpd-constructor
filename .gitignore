@@ -1,0 +1,13 @@
+# Виртуальное окружение и служебные файлы Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Настройки IDE
+.idea/
+.vscode/
+
+# Локальные секреты и настройки
+.env
