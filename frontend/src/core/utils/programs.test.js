@@ -114,4 +114,11 @@ describe('programs', () => {
         expect(request.section_contents.IV_table[1]).toMatchObject({num: '2', laboratory: '16', control_type: ''});
         expect(request.section_contents.IV_table[0]).not.toHaveProperty('id');
     });
+
+    it('не отправляет пустые вводные тексты, чтобы backend подставил свои', () => {
+        const {section_contents: sectionContents} = toGenerateRequest(createFilledProgram());
+
+        expect(sectionContents.III_desc).toBeUndefined();
+        expect(sectionContents.VI_description).toBeUndefined();
+    });
 });

@@ -1,0 +1,56 @@
+{
+  "discipline_name": "Web Development (Веб-разработка)",
+  "teacher_name": "И. И. Иванов",
+  "teacher_title": "к. т. н., доцент",
+  "department": "Тестовая кафедра",
+  "ums_date": "«10» марта 2026 г.",
+  "ums_protocol": "7",
+  "credits": "4",
+  "total_hours": "144",
+  "attestation_form": "экзамен",
+  "custom_filename": "",
+  "toc_items": [
+    {"id": "I", "title": "I. Цели и задачи освоения дисциплины", "page": "3"},
+    {"id": "II", "title": "II. Место дисциплины в структуре ОП", "page": "3"},
+    {"id": "IV", "title": "IV. Содержание и структура дисциплины", "page": "5"}
+  ],
+  "toc_subitems": {
+    "IV": [
+      {"title": "4.1. Содержание дисциплины", "page": "5"},
+      {"title": "4.2. План самостоятельной работы", "page": "6"}
+    ]
+  },
+  "section_contents": {
+    "I": "Цель: научить создавать веб-приложения.\nЗадачи:\n- изучить клиент-серверную архитектуру\n- освоить веб-фреймворк",
+    "II": "Дисциплина относится к вариативной части.\n- опирается на курс программирования",
+    "III_desc": "Освоение дисциплины направлено на формирование компетенций:",
+    "III_competencies": [
+      {"competence": "ОПК-1. Тестовая компетенция", "indicator": "ОПК-1.1. Тестовый индикатор", "results": "Знания:\n– основ веб-разработки"}
+    ],
+    "IV_table": [
+      {"num": "1", "topic": "Тема 1. HTTP", "lectures": "2", "practical": "1", "laboratory": "-", "consultations": "-", "independent": "4", "format": "Лекция", "assessment": "-", "control_type": "-", "points": "-"},
+      {"num": "2", "topic": "Тема 1. HTTP", "lectures": "-", "practical": "-", "laboratory": "2", "consultations": "1", "independent": "6", "format": "Лабораторная работа", "assessment": "лабораторная работа № 1", "control_type": "отчёт", "points": "10"},
+      {"num": "3", "topic": "Тема 2. REST", "lectures": "4", "practical": "-", "laboratory": "4", "consultations": "-", "independent": "-", "format": "Лабораторная работа", "assessment": "лабораторная работа № 2", "control_type": "отчёт", "points": "15"}
+    ],
+    "IV_table42": [
+      {"num": "1", "topic": "Тема 1. HTTP", "semester": "1", "deadline": "2", "work_type": "- повторение лекций", "hours": "10", "materials": "-"},
+      {"num": "2", "topic": "Тема 2. REST", "semester": "1", "deadline": "4", "work_type": "- подготовка к лабораторной", "hours": "12", "materials": "конспект"}
+    ],
+    "V_main_literature": "1. Иванов И. И. Веб-разработка. — М.: Тест, 2024.\n2. Петров П. П. Основы HTTP. — СПб.: Тест, 2023.",
+    "V_additional_literature": "1. Сидоров С. С. REST на практике. — М.: Тест, 2022.",
+    "V_internet_resources": "1. Документация [Электронный ресурс]. — URL: https://example.org",
+    "VI_description": "При реализации дисциплины используются следующие помещения:",
+    "VI_table": [
+      {"num": "1", "type": "Лекции", "audience": "Лекционная аудитория", "equipment": "Проектор"},
+      {"num": "2", "type": "Лабораторные", "audience": "Компьютерный класс", "equipment": "25 ПК"}
+    ],
+    "VII": "Студент выполняет лабораторные работы.\nОтчёт сдаётся преподавателю.",
+    "VIII_table": [
+      {"num": "1", "code": "ОПК-1.1", "name": "лабораторная работа № 1"}
+    ],
+    "VIII_labs": [
+      {"number": 1, "goal": "Изучить HTTP-запросы", "tasks": "Отправить запрос", "theory": "HTTP — протокол прикладного уровня", "steps": "Установить клиент\nОтправить GET-запрос", "questions": "Что такое веб-сервер?\nЧем GET отличается от POST?"}
+    ],
+    "IX": "Экзамен выставляется по сумме баллов."
+  }
+}

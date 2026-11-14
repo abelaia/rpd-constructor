@@ -2,16 +2,24 @@
 
 Преподаватель по шагам заполняет рабочую программу дисциплины — девять разделов с подсказками, таблицей тем и проверками — и скачивает готовый Word-документ по ГОСТ. Оформление, нумерация и суммы часов и баллов считаются сами.
 
-| Часть    | Стек                                         | Папка                                     |
-| -------- | -------------------------------------------- | ----------------------------------------- |
-| Backend  | Python, FastAPI, python-docx                 | [`main.py`](main.py), [`app/`](app/)      |
-| Frontend | Vue 3, Vite, Pinia, vue-router, SCSS по БЭМ  | [`frontend/`](frontend/)                  |
+| Часть    | Стек                                        | Папка                                |
+| -------- | ------------------------------------------- | ------------------------------------ |
+| Backend  | Python, FastAPI, python-docx                | [`main.py`](main.py), [`app/`](app/) |
+| Frontend | Vue 3, Vite, Pinia, vue-router, SCSS по БЭМ | [`frontend/`](frontend/)             |
 
 ## Быстрый старт
 
-Нужны **Python 3.10+** и **Node.js 20+**. Понадобятся два терминала.
+Нужны **Python 3.12+** и **Node.js 20+**. Понадобятся два терминала.
 
 **1. Backend** — из корня проекта:
+
+```bash
+python -m venv .venv
+```
+
+```bash
+.venv\Scripts\activate
+```
 
 ```bash
 pip install -r requirements.txt
@@ -49,27 +57,41 @@ npm run dev
 
 Черновики хранятся в браузере (`localStorage`) и сохраняются после каждого изменения.
 
-## Команды frontend
+## Разработка
 
-| Команда          | Что делает                      |
-| ---------------- | ------------------------------- |
-| `npm run dev`    | dev-сервер на порту 5173        |
-| `npm run build`  | сборка в `frontend/dist`        |
-| `npm test`       | тесты Vitest                    |
-| `npm run lint`   | ESLint                          |
-| `npm run format` | Prettier                        |
+Backend — из корня проекта:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+| Команда         | Что делает                |
+| --------------- | ------------------------- |
+| `pytest`        | тесты                     |
+| `ruff check .`  | проверка кода             |
+| `ruff format .` | автоформатирование        |
+
+Frontend — из папки `frontend/`:
+
+| Команда          | Что делает               |
+| ---------------- | ------------------------ |
+| `npm run dev`    | dev-сервер на порту 5173 |
+| `npm run build`  | сборка в `frontend/dist` |
+| `npm test`       | тесты Vitest             |
+| `npm run lint`   | ESLint                   |
+| `npm run format` | Prettier                 |
 
 ## Структура
 
-```
-main.py                 backend: POST /generate-word → .docx
-app/schemas.py          формат запроса на сборку документа
-frontend/src/
-├── pages/              страницы: список программ, редактор, «Документ готов»
-├── components/         Programs/, Editor/, Ui/ (кнопки, поля, окна)
-├── composables/        логика компонентов: редактор, скачивание, форма
-├── core/               данные разделов, расчёты, хранилище, API
-└── assets/             стили (переменные, миксины) и картинки
-```
-
-Старый интерфейс на Jinja (`templates/`, `static/`) пока лежит рядом и открывается на `http://localhost:8000`.
+| Путь                    | Назначение                                                  |
+| ----------------------- | ----------------------------------------------------------- |
+| `main.py`               | веб-сервер FastAPI: `POST /generate-word` → .docx           |
+| `app/schemas.py`        | формат запроса на сборку документа (Pydantic)               |
+| `app/config.py`         | реквизиты вуза                                              |
+| `app/filenames.py`      | имя скачиваемого файла                                      |
+| `app/docx_builder/`     | сборка документа: по файлу на группу разделов РПД           |
+| `tests/`                | тесты backend; `tests/snapshots/` — эталон документа        |
+| `frontend/src/pages/`   | страницы: список программ, редактор, «Документ готов»       |
+| `frontend/src/components/` | `Programs/`, `Editor/`, `Ui/` (кнопки, поля, окна)       |
+| `frontend/src/core/`    | данные разделов, расчёты, хранилище черновиков, API         |
+| `templates/`, `static/` | старый интерфейс на Jinja, открывается на `localhost:8000`  |

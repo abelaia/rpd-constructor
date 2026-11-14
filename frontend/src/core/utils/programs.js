@@ -321,6 +321,14 @@ export function getDocumentName(program) {
 }
 
 /**
+ * @param {string} text
+ * @returns {string | undefined}
+ */
+function toOptionalText(text) {
+    return hasText(text) ? text : undefined;
+}
+
+/**
  * @param {{id: string}} row
  * @returns {Record<string, unknown>}
  */
@@ -367,21 +375,18 @@ export function toGenerateRequest(program) {
         section_contents: {
             I: sections.goals,
             II: sections.position,
-            III_desc: sections.competenciesIntro,
+            III_desc: toOptionalText(sections.competenciesIntro),
             III_competencies: sections.competencies.map((competency) => ({
                 competence: competency.competence,
                 indicator: competency.indicator,
                 results: getCompetencyResults(competency),
             })),
-            IV_credits: credits,
-            IV_hours: totalHours,
-            IV_attestation: program.attestationForm,
             IV_table: toNumberedRows(sections.topics).map((row) => ({...row, control_type: ''})),
             IV_table42: toNumberedRows(sections.selfStudy),
             V_main_literature: sections.mainLiterature,
             V_additional_literature: sections.additionalLiterature,
             V_internet_resources: sections.internetResources,
-            VI_description: sections.equipmentIntro,
+            VI_description: toOptionalText(sections.equipmentIntro),
             VI_table: toNumberedRows(sections.equipment),
             VII: sections.guidelines,
             VIII_table: toNumberedRows(sections.assessmentCodes),
