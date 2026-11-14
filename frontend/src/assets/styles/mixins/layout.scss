@@ -1,0 +1,140 @@
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin column($gap: $indent-step * 3) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+@mixin button-reset {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+@mixin display($size: $font-size-xl) {
+    letter-spacing: -0.02em;
+    font-size: $size;
+    font-weight: $font-weight-extrabold;
+    line-height: 1.12;
+}
+
+@mixin caption {
+    color: $color-ink-soft;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    line-height: 1.4;
+}
+
+@mixin card {
+    border: 1px solid $color-line;
+    border-radius: $radius-card;
+    background-color: $color-surface;
+    box-shadow: $shadow-card;
+}
+
+@mixin lift {
+    transition:
+        transform $duration $ease-out,
+        box-shadow $duration ease;
+
+    @include hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-card-lifted;
+    }
+}
+
+@mixin icon-button($size: $control-height) {
+    flex: none;
+    width: $size;
+    height: $size;
+    transition: background-color $duration ease;
+    color: $color-ink-soft;
+    border-radius: 50%;
+
+    @include button-reset;
+    @include flex-center;
+
+    @include hover {
+        color: $color-ink;
+        background-color: $color-surface-muted;
+    }
+}
+
+@mixin control {
+    width: 100%;
+    transition:
+        border-color $duration ease,
+        box-shadow $duration ease;
+    color: $color-ink;
+    border: 1px solid $color-line-strong;
+    border-radius: $radius-field;
+    background-color: $color-surface;
+    font: inherit;
+
+    @include padding('x', 3.5);
+
+    &::placeholder {
+        color: $color-ink-muted;
+    }
+
+    @include hover {
+        border-color: $color-ink-faint;
+    }
+
+    &:focus {
+        border-color: $color-teal;
+        outline: none;
+        box-shadow: 0 0 0 1px $color-teal;
+    }
+}
+
+@mixin chip-status($background, $color) {
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+    height: $indent-step * 6;
+    white-space: nowrap;
+    color: $color;
+    border-radius: $radius-chip;
+    background-color: $background;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    gap: $indent-step * 1.5;
+
+    @include padding('x', 2.5);
+
+    &::before {
+        width: 6px;
+        height: 6px;
+        content: '';
+        border-radius: 50%;
+        background-color: currentColor;
+    }
+}
+
+@mixin paper {
+    color: $color-paper-ink;
+    border: 1px solid $color-paper-line;
+    border-radius: $radius-paper;
+    background-color: $color-paper;
+    box-shadow: $shadow-paper;
+    font-family: $font-document;
+    font-size: $font-size-document;
+    line-height: $line-height-document;
+}
+
+@mixin highlight-pill {
+    display: inline-block;
+    transform: rotate(-2deg);
+    color: $color-button-ink;
+    border-radius: $radius-card;
+    background-color: $color-amber;
+    box-shadow: 0 4px 0 $color-amber-edge;
+
+    @include padding('x', 4.5);
+}
